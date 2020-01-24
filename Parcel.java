@@ -5,11 +5,14 @@ public class Parcel{
     private boolean speedy;
     private double speedyCost;
     private double totalCost;
+    private double overweightCost;
+    private double weight;
     
-    public Parcel(double height, double width, double length, boolean s){
+    public Parcel(double height, double width, double length, boolean s, double kg){
         dimensions = new ParcelDimensions(height, width, length);
         type = new ParcelType(dimensions);
         speedy = s;
+        weight = kg;
         setRate(type);
     }
     
@@ -28,18 +31,22 @@ public class Parcel{
                 parcelCost = 25;
                 break;
         }
+        overweightCost = getOverweightRate(type);
+        totalCost = parcelCost + overweightCost;
         if(speedy){
-            speedyCost = parcelCost;
+            totalCost = totalCost*2;
         }
-        else{
-            speedyCost = 0;
-        }
-        totalCost = parcelCost + speedyCost;
     }
     public double getRate(){
         return totalCost;
     }
+    
+    public double getOverweightRate(ParcelType pt){
+        double weightLimit = pt.getWeightLimit();
+        double overweight = weight - weightLimit;
+        overweightCost = (overweight > 0) ? overweight*2 : 0;
+        return overweightCost;
+    }
 }
-
 
 
