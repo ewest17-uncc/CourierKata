@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Order{
     
     public Parcel[] Parcels;
@@ -37,6 +38,23 @@ public class Order{
         }
         System.out.println("Order Total: " + orderTotal);
     }
+    
+    /*
+    
+    public void calculateDiscount(Parcel[] p){
+        Parcel temp;
+        for(int i=0; i<p.length; i++){
+            for(int j=i+1; j<p.length; j++){
+                if(p[i].compareTo(p[j]) == 1){
+                    temp = p[i];
+                    p[i] = p[j];
+                    p[j] = temp;
+                }
+            }
+        }
+    }
+    
+    */
     
     
 }

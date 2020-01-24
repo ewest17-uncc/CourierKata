@@ -54,6 +54,16 @@ public class Parcel{
     public ParcelType getParcelType(){
         return type;
     }
+    
+    public int compareTo(Parcel other){
+        if(this.getRate() > other.getRate())
+            return 1;
+        else if (this.getRate() == other.getRate())
+            return 0 ;
+        return -1 ;
+    }
+
+    
 }
 
 
