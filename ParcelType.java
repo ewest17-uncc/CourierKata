@@ -4,9 +4,15 @@ public class ParcelType{
     private double largest;
     private double weightLimit;
 
-    public ParcelType(ParcelDimensions pd){
+    public ParcelType(ParcelDimensions pd, double weight){
         double largest = pd.getLargestDimension();
-        if(largest < 10){
+        if(weight>10){
+            type = "Heavy";
+            typeInt = 4;
+            
+            weightLimit = 50;
+        }
+        else if(largest < 10){
             type = "Small";
             typeInt = 0;
             
