@@ -2,10 +2,14 @@ public class Parcel{
     private double parcelCost;
     private ParcelDimensions dimensions;
     private ParcelType type;
+    private boolean speedy;
+    private double speedyCost;
+    private double totalCost;
     
-    public Parcel(double height, double width, double length){
+    public Parcel(double height, double width, double length, boolean s){
         dimensions = new ParcelDimensions(height, width, length);
         type = new ParcelType(dimensions);
+        speedy = s;
         setRate(type);
     }
     
@@ -24,9 +28,16 @@ public class Parcel{
                 parcelCost = 25;
                 break;
         }
+        if(speedy){
+            speedyCost = parcelCost;
+        }
+        else{
+            speedyCost = 0;
+        }
+        totalCost = parcelCost + speedyCost;
     }
     public double getRate(){
-        return parcelCost;
+        return totalCost;
     }
 }
 
